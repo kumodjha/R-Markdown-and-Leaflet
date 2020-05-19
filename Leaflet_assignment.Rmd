@@ -1,0 +1,31 @@
+---
+title: "R Markdown and Leaflet Assignment"
+author: "Kumod Jha"
+date: "19/05/2020"
+output:
+  md_document: default
+  html_document: default
+  word_document: default
+---
+
+## R Markdown
+
+popdata_india <- read.csv("India_population_lat_long.csv")
+colnames(popdata_india) <- c("State", "latitude", "longitude","population")
+
+popdata_india$popsep <- format(popdata_india$population,big.mark=",",scientific=FALSE)
+popdata_india$pop <- do.call(paste, c(popdata_india[c("State", "popsep")], sep = "    population:"))
+
+
+
+library(leaflet)
+options(viewer = NULL)
+india_pop_map <- popdata_india %>%
+    leaflet() %>%
+    addTiles() %>%
+    addCircles(weight = 1, radius = (popdata_india$population)/1000, popup = strwrap(popdata_india$pop))
+
+
+india_pop_map
+
+
