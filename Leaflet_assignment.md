@@ -15,3 +15,6 @@ addCircles(weight = 1, radius =
 (popdata\_india*p**o**p**u**l**a**t**i**o**n*)/1000, *p**o**p**u**p* = *s**t**r**w**r**a**p*(*p**o**p**d**a**t**a*<sub>*i*</sub>*n**d**i**a*pop))
 
 india\_pop\_map
+
+library(htmlwidgets) saveWidget(india\_pop\_map,
+file=“india\_pop\_map.html”,title = “19-May-2019”)
